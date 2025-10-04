@@ -24,8 +24,8 @@ class Cliente(db.Model):
     nome = db.Column(db.String(100), nullable=False)
     telefone = db.Column(db.String(20), nullable=False)
 
-    carros = db.relationship("Carro", backref="dono", lazy=True)
-    agendamentos = db.relationship("Agendamento", backref="cliente", lazy=True)
+    carros = db.relationship("Carro", backref="dono", lazy=True, cascade="all, delete-orphan")
+    agendamentos = db.relationship("Agendamento", backref="cliente", lazy=True, cascade="all, delete-orphan")
 
 
 
